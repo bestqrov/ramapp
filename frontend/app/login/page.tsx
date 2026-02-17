@@ -18,7 +18,25 @@ export default function LoginPage() {
     useEffect(() => {
         const token = (typeof window !== 'undefined') ? localStorage.getItem('accessToken') : null;
         if (token) {
-            // Already logged in logic
+            // Check if user is already loaded in store, or trust the token for now and redirect
+            // Ideally we wait for user to be loaded.
+            const user = useAuthStore.getState().user;
+            if (user) {
+                if (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN') router.push('/admin');
+                else if (user.role === 'SECRETARY') router.push('/secretary');
+                else router.push('/'); // Fallback
+            } else {
+                // Try to fetch me first? Or just let them proceed to login if state is empty.
+                // If we have a token but no user, useAuthStore should be fetching it.
+                // let's rely on the store's user object.
+                useAuthStore.getState().getMe().then(() => {
+                    const updatedUser = useAuthStore.getState().user;
+                    if (updatedUser) {
+                        if (updatedUser.role === 'ADMIN' || updatedUser.role === 'SUPER_ADMIN') router.push('/admin');
+                        else if (updatedUser.role === 'SECRETARY') router.push('/secretary');
+                    }
+                });
+            }
         }
     }, [router]);
 
