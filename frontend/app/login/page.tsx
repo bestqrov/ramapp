@@ -40,11 +40,7 @@ export default function LoginPage() {
             <div className="hidden lg:flex lg:w-1/2 h-full relative bg-slate-900 items-center justify-center p-12 overflow-hidden group shrink-0">
                 {/* Background Banner with deep overlay */}
                 <div className="absolute inset-0 z-0">
-                    <img
-                        src="/assets/glaf.jpg"
-                        alt="Institut Injahi"
-                        className="w-full h-full object-cover opacity-20 transform group-hover:scale-110 transition-transform duration-[20s] ease-out mix-blend-luminosity"
-                    />
+
                     <div className="absolute inset-0 bg-gradient-to-tr from-indigo-950 via-slate-900/95 to-slate-900/90"></div>
                 </div>
 
@@ -79,11 +75,7 @@ export default function LoginPage() {
                 <div className="max-w-md w-full mx-auto flex flex-col h-full">
 
                     {/* Top Section: Banner */}
-                    <div className="shrink-0 mb-4 lg:mb-6 animate-in fade-in slide-in-from-top-6 duration-700">
-                        <div className="rounded-[2.5rem] overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.08)] border-[3px] border-slate-50 transform hover:scale-[1.01] transition-all duration-500">
-                            <img src="/assets/glaf.jpg" alt="Institut Injahi" className="w-full h-auto max-h-[160px] object-cover" />
-                        </div>
-                    </div>
+
 
                     {/* Middle Section: Header & Form (Grows to fill space) */}
                     <div className="flex-1 flex flex-col justify-center min-h-0">
