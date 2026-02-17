@@ -44,7 +44,7 @@ export default function SettingsPage() {
 
     // School Profile State
     const [schoolProfile, setSchoolProfile] = useState({
-        schoolName: 'INSTITUT INJAHI',
+        schoolName: 'Enovazone Acadimeca',
         address: 'Ouarzazate, Maroc',
         phone: '+212 XXX-XXXXXX',
         email: 'contact@injahi.com',
@@ -402,7 +402,7 @@ export default function SettingsPage() {
                                     name="schoolName"
                                     value={schoolProfile.schoolName}
                                     onChange={handleSchoolProfileChange}
-                                    placeholder="INSTITUT INJAHI"
+                                    placeholder="Enovazone Acadimeca"
                                     className="bg-gray-50 border-gray-200 focus:bg-white"
                                 />
 
