@@ -253,8 +253,6 @@ export default function RecuPage() {
                     ${schoolProfile.logo ? `<img src="${schoolProfile.logo}" style="width: 50px; height: 50px; object-fit: contain;" />` : ''}
                     <div style="text-align: center; flex: 1;">
                         <div class="header bold">${schoolProfile.schoolName}</div>
-                        <div class="small">${schoolProfile.address}</div>
-                        <div class="small">Tel: ${schoolProfile.phone}</div>
                     </div>
                 </div>
                 
@@ -269,7 +267,6 @@ export default function RecuPage() {
                 
                 <div class="medium">
                     <div>Client: ${receipt.issuedTo}</div>
-                    <div>Tel: ${receipt.phoneNumber || 'N/A'}</div>
                     <div>Paiement: ${receipt.paymentMethod}</div>
                     ${receipt.paymentMethod === 'Check' && receipt.checkNumber ? `<div>Chèque No: ${receipt.checkNumber}</div>` : ''}
                 </div>

@@ -157,8 +157,6 @@ export default function SecretaryRecuPage() {
             <body style="font-family: monospace; width: 80mm; padding: 10mm;">
                 <div style="text-align: center;">
                     <h2 style="margin: 0;">${schoolProfile.schoolName}</h2>
-                    <p style="font-size: 10px; margin: 4px 0;">${schoolProfile.address}</p>
-                    <p style="font-size: 10px; margin: 0;">Tel: ${schoolProfile.phone}</p>
                 </div>
                 <div style="text-align: center; border-top: 1px dashed #000; border-bottom: 1px dashed #000; margin: 10px 0; padding: 5px 0;">
                     <strong>REÇU DE ${receipt.receiptType.toUpperCase()}</strong>

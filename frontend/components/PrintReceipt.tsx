@@ -38,12 +38,6 @@ export const PrintReceipt: React.FC<PrintReceiptProps> = ({
                 <div style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '5px' }}>
                     ArwaEduc
                 </div>
-                <div style={{ fontSize: '10px', marginBottom: '2px' }}>
-                    your adresse here
-                </div>
-                <div style={{ fontSize: '10px' }}>
-                    Tél: +212 608 18 38 86
-                </div>
             </div>
 
             {/* Title */}
@@ -83,7 +77,6 @@ export const PrintReceipt: React.FC<PrintReceiptProps> = ({
             {/* Client Info */}
             <div style={{ marginBottom: '10px', fontSize: '11px' }}>
                 <div>Client: {studentName} {studentSurname}</div>
-                <div>Tél: {phone}</div>
                 <div>Paiement: {paymentMethod}</div>
             </div>
 
