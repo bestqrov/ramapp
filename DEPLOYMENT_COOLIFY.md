@@ -34,6 +34,12 @@ This guide explains how to deploy your **Backend (Node.js/Express)** and **Front
         -   Frontend service is mapped to internal port `3001`.
     -   Assign domains to each service in Coolify settings (e.g., `api.example.com` -> Backend:3000, `app.example.com` -> Frontend:3001).
 
+6.  **Database Seeding (Initial Setup)**:
+    -   After the backend service is running, you need to seed the database with the initial admin account.
+    -   Open the terminal for the **backend** service in Coolify.
+    -   Run: `npx prisma db seed`
+    -   This will create the admin user with the configured credentials.
+
 ## Notes
 -   If you are using a managed MongoDB (like MongoDB Atlas), just provide the `DATABASE_URL`.
 -   If you want to host MongoDB yourself within this stack, uncomment the `mongodb` section in `docker-compose.yml` and configure the volumes.
