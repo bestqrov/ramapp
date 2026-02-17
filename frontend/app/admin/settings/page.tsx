@@ -129,7 +129,7 @@ export default function SettingsPage() {
                 setError('Session expirée. Redirection...');
                 localStorage.removeItem('accessToken');
                 setTimeout(() => {
-                    window.location.href = 'https://appinjahi.techmar.cloud';
+                    window.location.href = 'https://arwaeduc.enovazoneacadimeca.com';
                 }, 2000);
             } else {
                 setError(`Erreur lors du chargement des utilisateurs: ${err.response?.data?.message || err.message}`);

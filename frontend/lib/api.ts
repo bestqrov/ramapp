@@ -58,7 +58,7 @@ api.interceptors.response.use(
                 processQueue(e, null);
                 clearTokens();
                 if (typeof window !== 'undefined' && !window.location.pathname.includes('/login')) {
-                    window.location.href = 'https://appinjahi.techmar.cloud';
+                    window.location.href = 'https://arwaeduc.enovazoneacadimeca.com';
                 }
                 return Promise.reject(e);
             } finally {
