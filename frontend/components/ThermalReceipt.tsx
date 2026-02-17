@@ -2,10 +2,14 @@ import React from 'react';
 import { formatCurrency } from '../utils/format';
 
 export default function ThermalReceipt({ receipt }: { receipt: any }) {
+    // Check if this is a soutien or formation pro receipt
+    const hideSchoolInfo = receipt.type === 'soutien' || receipt.type === 'formation-pro' || 
+                          receipt.category === 'SOUTIEN' || receipt.category === 'FORMATION';
+    
     return (
         <div style={{ width: 384, padding: 8, fontFamily: 'monospace' }}>
             <div style={{ textAlign: 'center', fontWeight: 'bold' }}>{receipt.schoolName || 'School'}</div>
-            <div style={{ textAlign: 'center', marginBottom: 8 }}>{receipt.address || ''}</div>
+            {!hideSchoolInfo && <div style={{ textAlign: 'center', marginBottom: 8 }}>{receipt.address || ''}</div>}
             <div>Receipt: {receipt.id}</div>
             <div>Date: {new Date(receipt.date).toLocaleString()}</div>
             <div>Student: {receipt.studentName}</div>

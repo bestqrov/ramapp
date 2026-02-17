@@ -215,8 +215,6 @@ export default function SoutienInscriptionForm({ onSuccess, onSuccessRedirect }:
             </head>
             <body>
                 <div class="center header bold">ArwaEduc</div>
-                <div class="center small">Hay mohmadi,Ouarzazate, Maroc</div>
-                <div class="center small">Tél: +212 XXX-XXXXXX</div>
                 
                 <div class="center title bold">Reçu Soutien</div>
                 <div class="dashed"></div>

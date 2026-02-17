@@ -950,8 +950,12 @@ export default function RecuPage() {
                                         )}
                                         <div className="flex-1 text-center">
                                             <div className="font-bold mb-1">{schoolProfile.schoolName}</div>
-                                            <div className="text-xs mb-1">{schoolProfile.address}</div>
-                                            <div className="text-xs">Tel: {schoolProfile.phone}</div>
+                                            {viewingReceipt.receiptType !== 'Soutien' && viewingReceipt.receiptType !== 'Formation' && (
+                                                <>
+                                                    <div className="text-xs mb-1">{schoolProfile.address}</div>
+                                                    <div className="text-xs">Tel: {schoolProfile.phone}</div>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
 
