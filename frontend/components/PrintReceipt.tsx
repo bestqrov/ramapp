@@ -34,8 +34,8 @@ export const PrintReceipt: React.FC<PrintReceiptProps> = ({
             backgroundColor: 'white',
         }}>
             {/* Header */}
-            <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-                <div style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '5px' }}>
+            <div style={{ textAlign: 'center', marginBottom: '5px' }}>
+                <div style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '0px' }}>
                     ArwaEduc
                 </div>
             </div>
@@ -46,7 +46,7 @@ export const PrintReceipt: React.FC<PrintReceiptProps> = ({
                 fontSize: '14px',
                 fontWeight: 'bold',
                 marginBottom: '15px',
-                marginTop: '15px'
+                marginTop: '5px'
             }}>
                 Reçu Soutien
             </div>
@@ -76,7 +76,6 @@ export const PrintReceipt: React.FC<PrintReceiptProps> = ({
 
             {/* Client Info */}
             <div style={{ marginBottom: '10px', fontSize: '11px' }}>
-                <div>Client: {studentName} {studentSurname}</div>
                 <div>Paiement: {paymentMethod}</div>
             </div>
 

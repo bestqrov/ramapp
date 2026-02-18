@@ -156,14 +156,13 @@ export default function SecretaryRecuPage() {
             <head><title>Reçu - ${receipt.receiptNumber}</title></head>
             <body style="font-family: monospace; width: 80mm; padding: 10mm;">
                 <div style="text-align: center;">
-                    <h2 style="margin: 0;">${schoolProfile.schoolName}</h2>
+                    <h2 style="margin: 0; margin-bottom: 5px;">${schoolProfile.schoolName}</h2>
                 </div>
-                <div style="text-align: center; border-top: 1px dashed #000; border-bottom: 1px dashed #000; margin: 10px 0; padding: 5px 0;">
+                <div style="text-align: center; border-top: 1px dashed #000; border-bottom: 1px dashed #000; margin: 5px 0; padding: 5px 0;">
                     <strong>REÇU DE ${receipt.receiptType.toUpperCase()}</strong>
                 </div>
                 <div style="font-size: 11px;">
                     <div style="display: flex; justify-content: space-between;"><span>Date: ${currentDate}</span><span>No: ${receipt.receiptNumber}</span></div>
-                    <div>Client: ${receipt.issuedTo}</div>
                     <div>Paiement: ${receipt.paymentMethod}</div>
                 </div>
                 <div style="border-top: 1px dashed #000; margin: 10px 0;"></div>

@@ -249,14 +249,14 @@ export default function RecuPage() {
                 </style>
             </head>
             <body>
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px;">
                     ${schoolProfile.logo ? `<img src="${schoolProfile.logo}" style="width: 50px; height: 50px; object-fit: contain;" />` : ''}
                     <div style="text-align: center; flex: 1;">
                         <div class="header bold">${schoolProfile.schoolName}</div>
                     </div>
                 </div>
                 
-                <div class="center title bold">Reçu de ${receipt.receiptType}</div>
+                <div class="center title bold" style="margin-top: 0; margin-bottom: 15px;">Reçu de ${receipt.receiptType}</div>
                 <div class="dashed"></div>
                 
                 <div class="flex medium">
@@ -266,7 +266,6 @@ export default function RecuPage() {
                 <div class="dashed"></div>
                 
                 <div class="medium">
-                    <div>Client: ${receipt.issuedTo}</div>
                     <div>Paiement: ${receipt.paymentMethod}</div>
                     ${receipt.paymentMethod === 'Check' && receipt.checkNumber ? `<div>Chèque No: ${receipt.checkNumber}</div>` : ''}
                 </div>
@@ -395,9 +394,6 @@ export default function RecuPage() {
                 </div>
 
                 <div className="pt-4 border-t border-gray-200 text-sm space-y-2">
-                    <p className="flex items-center gap-2 text-gray-700">
-                        <User size={14} /> <strong>Client:</strong> {receipt.issuedTo}
-                    </p>
                     {receipt.phoneNumber && (
                         <p className="flex items-center gap-2 text-gray-700">
                             <Phone size={14} /> {receipt.phoneNumber}
@@ -971,7 +967,6 @@ export default function RecuPage() {
                                     <div className="border-b border-dashed border-black my-2"></div>
 
                                     <div className="text-xs space-y-1">
-                                        <div>Client: {viewingReceipt.issuedTo}</div>
                                         <div>Tel: {viewingReceipt.phoneNumber || 'N/A'}</div>
                                         <div>Paiement: {viewingReceipt.paymentMethod}</div>
                                         {viewingReceipt.paymentMethod === 'Check' && viewingReceipt.checkNumber && (

@@ -216,7 +216,7 @@ export default function SoutienInscriptionForm({ onSuccess, onSuccessRedirect }:
             <body>
                 <div class="center header bold">ArwaEduc</div>
                 
-                <div class="center title bold">Reçu Soutien</div>
+                <div class="center title bold" style="margin-top: 5px;">Reçu Soutien</div>
                 <div class="dashed"></div>
                 
                 <div class="flex medium">
@@ -226,7 +226,6 @@ export default function SoutienInscriptionForm({ onSuccess, onSuccessRedirect }:
                 <div class="dashed"></div>
                 
                 <div class="medium">
-                    <div>Client: ${lastRegisteredStudent.name} ${lastRegisteredStudent.surname}</div>
                     <div>Tél: ${lastRegisteredStudent.phone}</div>
                     <div>Paiement: Cash</div>
                 </div>
