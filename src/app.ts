@@ -47,7 +47,6 @@ apiRouter.use('/groups', groupsRoutes);
 apiRouter.use('/teachers', teachersRoutes);
 apiRouter.use('/transactions', transactionsRoutes);
 apiRouter.use('/dashboard', dashboardRoutes);
-apiRouter.use('/dashboard', dashboardRoutes);
 
 app.use('/api', apiRouter);
 
