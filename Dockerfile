@@ -12,23 +12,11 @@ RUN npm ci
 # Generate Prisma Client
 RUN npx prisma generate
 
-# Copy frontend package files
-COPY frontend/package*.json ./frontend/
-
-# Install frontend dependencies
-WORKDIR /app/frontend
-RUN npm ci
-
-# Copy all source code
-WORKDIR /app
-COPY . .
-
-# Build frontend
-WORKDIR /app/frontend
-RUN npm run build
+# Copy backend source code
+COPY src ./src
+COPY tsconfig.json ./
 
 # Build backend TypeScript
-WORKDIR /app
 RUN npm run build
 
 # Expose port

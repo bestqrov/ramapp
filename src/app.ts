@@ -51,14 +51,18 @@ apiRouter.use('/dashboard', dashboardRoutes);
 
 app.use('/api', apiRouter);
 
-// ================= FRONTEND STATIC =================
-// Next.js static export output
-const frontendPath = path.join(__dirname, '..', 'frontend', 'dist');
-app.use(express.static(frontendPath));
-
-// Any non-API route → frontend
-app.get('*', (_req, res) => {
-    res.sendFile(path.join(frontendPath, 'index.html'));
+// ================= ROOT ENDPOINT =================
+app.get('/', (_req, res) => {
+    res.json({ 
+        status: 'success', 
+        message: 'École App Backend API is running',
+        endpoints: [
+            'GET /health',
+            'POST /api/auth/login',
+            'GET /api/dashboard/*',
+            'Frontend: Deploy Next.js app separately and configure API_URL'
+        ]
+    });
 });
 
 // ================= ERROR HANDLING =================

@@ -8,14 +8,8 @@ const nextConfig = {
         unoptimized: true,
         domains: ['localhost'],
     },
-    async rewrites() {
-        return [
-            {
-                source: '/api/:path*',
-                destination: 'http://localhost:3000/:path*',
-            },
-        ];
-    },
+    trailingSlash: true,
+    // Remove rewrites for static export - API calls will be handled by absolute URLs
 }
 
 module.exports = nextConfig
