@@ -52,11 +52,11 @@ apiRouter.use('/dashboard', dashboardRoutes);
 app.use('/api', apiRouter);
 
 // ================= FRONTEND STATIC =================
-// path ديال build ديال frontend (Vite)
+// Next.js static export output
 const frontendPath = path.join(__dirname, '..', 'frontend', 'dist');
 app.use(express.static(frontendPath));
 
-// أي route ماشي API → frontend
+// Any non-API route → frontend
 app.get('*', (_req, res) => {
     res.sendFile(path.join(frontendPath, 'index.html'));
 });
