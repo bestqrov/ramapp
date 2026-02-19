@@ -248,7 +248,7 @@ export const getParentDashboardData = async (userId: string): Promise<ParentDash
         ],
         recent: student.payments.map(payment => ({
             id: payment.id,
-            description: payment.description || 'Paiement',
+            description: payment.note || 'Paiement',
             amount: payment.amount,
             paymentDate: payment.createdAt.toISOString(),
             method: payment.method
@@ -272,7 +272,7 @@ export const getParentDashboardData = async (userId: string): Promise<ParentDash
             name: student.name,
             surname: student.surname,
             schoolLevel: student.schoolLevel || '',
-            photo: student.photo,
+            photo: student.photo || undefined,
             groups
         },
         attendances,
@@ -417,23 +417,31 @@ export const saveAttendance = async (userId: string, groupId: string, date: stri
     }
 
     // Save attendance for each student
-    const attendancePromises = Object.entries(attendance).map(([studentId, status]) => {
-        return prisma.attendance.upsert({
+    const attendancePromises = Object.entries(attendance).map(async ([studentId, status]) => {
+        // First, try to find existing attendance for this student on this date
+        const existingAttendance = await prisma.attendance.findFirst({
             where: {
-                studentId_date: {
-                    studentId: studentId,
-                    date: new Date(date)
-                }
-            },
-            update: {
-                status: status as any
-            },
-            create: {
                 studentId: studentId,
-                date: new Date(date),
-                status: status as any
+                date: new Date(date)
             }
         });
+
+        if (existingAttendance) {
+            // Update existing attendance
+            return prisma.attendance.update({
+                where: { id: existingAttendance.id },
+                data: { status: status as any }
+            });
+        } else {
+            // Create new attendance
+            return prisma.attendance.create({
+                data: {
+                    studentId: studentId,
+                    date: new Date(date),
+                    status: status as any
+                }
+            });
+        }
     });
 
     await Promise.all(attendancePromises);

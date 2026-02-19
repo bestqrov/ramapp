@@ -124,7 +124,7 @@ export const createParentCredentials = async (studentId: string, adminId: string
             name: parentName,
             role: 'PARENT',
             parentStudentId: studentId,
-            phone: student.parentPhone
+            gsm: student.parentPhone
         }
     });
 
@@ -180,7 +180,7 @@ export const createTeacherCredentials = async (teacherData: {
             name: teacherData.name,
             role: 'TEACHER',
             teacherGroupIds: teacherData.groupIds,
-            phone: teacherData.phone
+            gsm: teacherData.phone
         }
     });
 
