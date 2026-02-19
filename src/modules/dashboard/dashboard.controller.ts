@@ -76,7 +76,7 @@ export const getTeacherDashboard = async (req: AuthRequest, res: Response): Prom
 export const getTeacherAttendance = async (req: AuthRequest, res: Response): Promise<void> => {
     try {
         const userId = req.user?.id;
-        const { date } = req.query;
+        const { date } = req.query as { date?: string };
         
         if (!userId) {
             sendError(res, 'User not authenticated', 'Authentication required', 401);
@@ -126,7 +126,7 @@ export const postTeacherAttendance = async (req: AuthRequest, res: Response): Pr
 export const getTeacherSchedule = async (req: AuthRequest, res: Response): Promise<void> => {
     try {
         const userId = req.user?.id;
-        const { week } = req.query;
+        const { week } = req.query as { week?: string };
         
         if (!userId) {
             sendError(res, 'User not authenticated', 'Authentication required', 401);

@@ -25,7 +25,7 @@ export const createStudentCredentials = async (studentId: string, adminId: strin
 
     // Check if student has SOUTIEN inscription
     const hasSoutienInscription = student.inscriptions.some(
-        inscription => inscription.type === 'SOUTIEN'
+        (inscription: any) => inscription.type === 'SOUTIEN'
     );
 
     if (!hasSoutienInscription) {
@@ -94,7 +94,7 @@ export const createParentCredentials = async (studentId: string, adminId: string
 
     // Check if student has SOUTIEN inscription
     const hasSoutienInscription = student.inscriptions.some(
-        inscription => inscription.type === 'SOUTIEN'
+        (inscription: any) => inscription.type === 'SOUTIEN'
     );
 
     if (!hasSoutienInscription) {
@@ -325,21 +325,21 @@ export const getUserAccounts = async (adminId: string) => {
     });
 
     return {
-        students: students.map(user => ({
+        students: students.map((user: any) => ({
             id: user.id,
             email: user.email,
             name: user.name,
             createdAt: user.createdAt,
             student: user.student
         })),
-        parents: parents.map(user => ({
+        parents: parents.map((user: any) => ({
             id: user.id,
             email: user.email,
             name: user.name,
             createdAt: user.createdAt,
             student: user.parentStudent
         })),
-        teachers: teachers.map(user => ({
+        teachers: teachers.map((user: any) => ({
             id: user.id,
             email: user.email,
             name: user.name,

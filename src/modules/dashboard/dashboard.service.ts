@@ -150,7 +150,7 @@ export const getStudentDashboardData = async (userId: string): Promise<StudentDa
     );
 
     // Format attendances
-    const attendances = student.attendances.map(attendance => ({
+    const attendances = student.attendances.map((attendance: any) => ({
         id: attendance.id,
         date: attendance.date.toISOString().split('T')[0],
         status: attendance.status,
@@ -226,7 +226,7 @@ export const getParentDashboardData = async (userId: string): Promise<ParentDash
     );
 
     // Format attendances
-    const attendances = student.attendances.map(attendance => ({
+    const attendances = student.attendances.map((attendance: any) => ({
         id: attendance.id,
         date: attendance.date.toISOString().split('T')[0],
         status: attendance.status,
@@ -246,7 +246,7 @@ export const getParentDashboardData = async (userId: string): Promise<ParentDash
                 type: 'monthly'
             }
         ],
-        recent: student.payments.map(payment => ({
+        recent: student.payments.map((payment: any) => ({
             id: payment.id,
             description: payment.note || 'Paiement',
             amount: payment.amount,
@@ -299,7 +299,7 @@ export const getTeacherDashboardData = async (userId: string): Promise<TeacherDa
     }
 
     const groups = await Promise.all(
-        user.teacherGroups.map(async (group) => {
+        user.teacherGroups.map(async (group: any) => {
             const groupDetails = await prisma.group.findUnique({
                 where: { id: group.id },
                 include: { students: true }
@@ -322,9 +322,9 @@ export const getTeacherDashboardData = async (userId: string): Promise<TeacherDa
 
     // Get today's classes
     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
-    const todayClasses = groups.filter(group => {
+    const todayClasses = groups.filter((group: any) => {
         return group.timeSlots.some((slot: any) => slot.day === today);
-    }).map(group => ({
+    }).map((group: any) => ({
         id: group.id,
         groupName: group.name,
         subject: group.subject,
@@ -378,12 +378,12 @@ export const getTeacherAttendanceData = async (userId: string, date: string) => 
         throw new Error('Teacher not found');
     }
 
-    const groups = user.teacherGroups.map(group => ({
+    const groups = user.teacherGroups.map((group: any) => ({
         id: group.id,
         name: group.name,
         subject: group.subject || '',
         level: group.level || '',
-        students: group.students.map(student => ({
+        students: group.students.map((student: any) => ({
             id: student.id,
             name: student.name,
             surname: student.surname,
@@ -474,10 +474,10 @@ export const getTeacherScheduleData = async (userId: string, week: number) => {
     
     const schedule = days.map(day => ({
         day,
-        classes: user.teacherGroups.filter(group => {
+        classes: user.teacherGroups.filter((group: any) => {
             const timeSlots = group.timeSlots ? JSON.parse(JSON.stringify(group.timeSlots)) : [];
             return timeSlots.some((slot: any) => slot.day === day);
-        }).map(group => ({
+        }).map((group: any) => ({
             id: group.id,
             groupName: group.name,
             subject: group.subject || '',
