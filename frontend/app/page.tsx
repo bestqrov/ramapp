@@ -17,6 +17,12 @@ export default function HomePage() {
                     router.push('/admin');
                 } else if (user?.role === 'SECRETARY') {
                     router.push('/secretary');
+                } else if (user?.role === 'STUDENT') {
+                    router.push('/student');
+                } else if (user?.role === 'PARENT') {
+                    router.push('/parent');
+                } else if (user?.role === 'TEACHER') {
+                    router.push('/teacher');
                 }
                 // If other roles exist, they might stay here or go elsewhere
             } else {

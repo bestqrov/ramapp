@@ -94,7 +94,10 @@ export default function StudentsPage() {
             student.parentName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
             student.phone?.includes(searchQuery); // Phone might be number or string
         const matchesLevel = filterLevel === 'ALL' || student.level === filterLevel;
-        return matchesSearch && matchesLevel;
+        // Only show soutien students (exclude formation pro students)
+        const isSoutien = !student.inscriptions || student.inscriptions.length === 0 ||
+            student.inscriptions.some((ins: any) => ins.type === 'SOUTIEN');
+        return matchesSearch && matchesLevel && isSoutien;
     });
 
     return (
@@ -276,9 +279,9 @@ export default function StudentsPage() {
                                             <td className="px-6 py-5">
                                                 <div className="flex flex-col gap-1.5">
                                                     <span className={`inline-flex items-center px-4 py-2 rounded-2xl text-xs font-black uppercase tracking-widest border-2 shadow-sm ${student.schoolLevel === 'LYCEE' ? 'bg-indigo-50 text-indigo-700 border-indigo-100 shadow-indigo-100/50' :
-                                                            student.schoolLevel === 'COLLEGE' ? 'bg-emerald-50 text-emerald-700 border-emerald-100 shadow-emerald-100/50' :
-                                                                student.schoolLevel === 'PRIMAIRE' ? 'bg-amber-50 text-amber-700 border-amber-100 shadow-amber-100/50' :
-                                                                    'bg-slate-50 text-slate-400 border-slate-100 italic'
+                                                        student.schoolLevel === 'COLLEGE' ? 'bg-emerald-50 text-emerald-700 border-emerald-100 shadow-emerald-100/50' :
+                                                            student.schoolLevel === 'PRIMAIRE' ? 'bg-amber-50 text-amber-700 border-amber-100 shadow-amber-100/50' :
+                                                                'bg-slate-50 text-slate-400 border-slate-100 italic'
                                                         }`}>
                                                         {student.schoolLevel || (
                                                             <button onClick={() => handleEdit(student)} className="hover:text-blue-500 transition-colors">Non renseigné</button>

@@ -14,6 +14,9 @@ enum UserRole {
   ADMIN
   SECRETARY
   SUPER_ADMIN
+  STUDENT
+  PARENT
+  TEACHER
 }
 
 enum InscriptionType {
@@ -35,6 +38,18 @@ model User {
   certification String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+
+  // Student-specific fields
+  studentId     String?   @db.ObjectId
+  student       Student?  @relation(fields: [studentId], references: [id])
+
+  // Parent-specific fields (links to student)
+  parentStudentId String?   @db.ObjectId
+  parentStudent   Student?  @relation("ParentOf", fields: [parentStudentId], references: [id])
+
+  // Teacher-specific fields
+  teacherGroupIds String[]  @db.ObjectId
+  teacherGroups   Group[]   @relation("TeacherGroups", fields: [teacherGroupIds], references: [id])
 
   @@map("users")
 }
@@ -69,6 +84,10 @@ model Student {
   groupIds     String[] @db.ObjectId
   groups       Group[]  @relation(fields: [groupIds], references: [id])
 
+  // User relations for login credentials
+  studentUser   User[]   @relation() // Student login
+  parentUsers   User[]   @relation("ParentOf") // Parent login(s)
+
   @@map("students")
 }
 
@@ -93,6 +112,10 @@ model Group {
   
   studentIds    String[] @db.ObjectId
   students      Student[] @relation(fields: [studentIds], references: [id])
+  
+  // Teacher User relations for login credentials
+  teacherUserIds String[] @db.ObjectId
+  teacherUsers   User[]   @relation("TeacherGroups", fields: [teacherUserIds], references: [id])
   
   timeSlots     Json? // [{ day: string, startTime: string, endTime: string }]
 

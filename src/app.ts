@@ -17,6 +17,7 @@ import pricingRoutes from './modules/pricing/pricing.routes';
 import groupsRoutes from './modules/groups/groups.routes';
 import teachersRoutes from './modules/teachers/teachers.routes';
 import transactionsRoutes from './modules/transactions/transactions.routes';
+import dashboardRoutes from './modules/dashboard/dashboard.routes';
 
 const app: Application = express();
 
@@ -45,6 +46,8 @@ apiRouter.use('/pricing', pricingRoutes);
 apiRouter.use('/groups', groupsRoutes);
 apiRouter.use('/teachers', teachersRoutes);
 apiRouter.use('/transactions', transactionsRoutes);
+apiRouter.use('/dashboard', dashboardRoutes);
+apiRouter.use('/dashboard', dashboardRoutes);
 
 app.use('/api', apiRouter);
 
